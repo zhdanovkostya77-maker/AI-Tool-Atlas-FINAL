@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#07101d">
+  <meta name="description" content="Discover, compare and save 200 curated AI tools with Atlas Assistant.">
+  <link rel="canonical" href="https://aitoolshub.aitoolsdirectory.workers.dev/">
+  <meta name="google-site-verification" content="WjVb0ng2wQDJbbWiAGzhD6dgr-HKOq5_GFZTLhYKD1s">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AI Tool Atlas">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/app.css?v=final1">
+  <title>AI Tool Atlas — 200 AI tools in one app</title>
+</head>
+<body>
+  <div class="app-bg" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" data-nav="home" aria-label="Home"><span class="brand-mark">✦</span><span>AI Tool <b>Atlas</b></span></button>
+      <div class="top-actions">
+        <button id="langBtn" class="chip-btn" aria-label="Switch language"><span id="langLabel">EN</span></button>
+        <button id="themeBtn" class="icon-btn" aria-label="Switch theme">◐</button>
+      </div>
+    </header>
+
+    <main class="screens" id="screens">
+      <section class="screen active" data-screen="home">
+        <div class="hero-card glass">
+          <div class="eyebrow"><span class="live-dot"></span><span data-i18n="curated">CURATED AI DISCOVERY · 200 TOOLS</span></div>
+          <h1><span data-i18n="heroA">Find the best</span> <span class="gradient-text">AI tools</span><br><span data-i18n="heroB">for your goals.</span></h1>
+          <p data-i18n="heroSub">Search, compare and save the right AI tools without the noise.</p>
+          <div class="searchbox">
+            <span>⌕</span><input id="homeSearch" type="search" autocomplete="off" placeholder="What do you want AI to help you with?">
+            <button id="homeSearchGo" data-i18n="search">Search</button>
+          </div>
+          <div class="quick-row" id="quickRow"></div>
+        </div>
+
+        <div class="atlas-stage glass" id="atlasStage">
+          <div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div>
+          <div class="particle p1"></div><div class="particle p2"></div><div class="particle p3"></div><div class="particle p4"></div>
+          <div class="mini-bot bot-left"><span></span><i></i></div>
+          <button class="robot" id="robotBtn" aria-label="Open Atlas Assistant">
+            <div class="antenna"><i></i></div>
+            <div class="head"><span class="eye left"></span><span class="eye right"></span><span class="mouth"></span></div>
+            <div class="body"><span>ATLAS</span><i></i></div>
+          </button>
+          <div class="mini-bot bot-right"><span></span><i></i></div>
+          <div class="stage-copy"><b data-i18n="askAtlas">Ask Atlas</b><small data-i18n="tapAtlas">Tap the robot for recommendations</small></div>
+        </div>
+
+        <div class="section-head"><div><span class="kicker" data-i18n="trending">TRENDING NOW</span><h2 data-i18n="popularTools">Popular AI tools</h2></div><button class="text-btn" data-nav="explore" data-i18n="viewAll">View all</button></div>
+        <div class="tool-scroll" id="trendingGrid"></div>
+      </section>
+
+      <section class="screen" data-screen="explore">
+        <div class="screen-title"><span class="kicker" data-i18n="discover">DISCOVER</span><h2 data-i18n="exploreTitle">Explore 200 AI tools</h2><p data-i18n="exploreSub">Search and filter without leaving this screen.</p></div>
+        <div class="sticky-tools glass">
+          <div class="searchbox compact"><span>⌕</span><input id="exploreSearch" type="search" autocomplete="off" placeholder="Search 200 tools..."></div>
+          <div class="filter-row" id="filterRow"></div>
+        </div>
+        <div class="results-meta"><span id="resultCount"></span><button id="clearFilters" class="text-btn" data-i18n="clear">Clear</button></div>
+        <div class="tool-grid" id="toolGrid"></div>
+      </section>
+
+      <section class="screen atlas-screen" data-screen="atlas">
+        <div class="screen-title"><span class="kicker">ATLAS AI</span><h2 data-i18n="atlasTitle">Your AI tool guide</h2><p data-i18n="atlasSub">Describe your goal and Atlas will shortlist tools from the catalog.</p></div>
+        <div class="chat-card glass">
+          <div class="chat-robot-row"><div class="chat-orb">✦</div><div><b>Atlas Assistant</b><small data-i18n="localGuide">Smart guide to 200 tools</small></div><span class="online-dot"></span></div>
+          <div class="chat-feed" id="chatFeed"></div>
+          <div class="prompt-row" id="promptRow"></div>
+          <form class="chat-form" id="chatForm"><input id="chatInput" autocomplete="off" placeholder="Describe your goal..."><button aria-label="Send">➜</button></form>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="saved">
+        <div class="screen-title"><span class="kicker" data-i18n="saved">SAVED</span><h2 data-i18n="savedTitle">Your favorite tools</h2><p data-i18n="savedSub">Saved on this device — no account needed.</p></div>
+        <div id="savedEmpty" class="empty-card glass"><div>♡</div><h3 data-i18n="savedEmptyTitle">Nothing saved yet</h3><p data-i18n="savedEmptySub">Tap the heart on any tool to keep it here.</p><button class="primary-btn" data-nav="explore" data-i18n="browseTools">Browse tools</button></div>
+        <div class="tool-grid" id="savedGrid"></div>
+      </section>
+
+      <section class="screen" data-screen="more">
+        <div class="screen-title"><span class="kicker" data-i18n="more">MORE</span><h2 data-i18n="moreTitle">Settings & tools</h2></div>
+        <div class="more-grid">
+          <button class="more-card glass" id="openCompare"><span>⇄</span><div><b data-i18n="compare">Compare tools</b><small data-i18n="compareSub">Pick up to 3 tools</small></div><i>›</i></button>
+          <button class="more-card glass" id="moreLang"><span>文</span><div><b data-i18n="language">Language</b><small id="moreLangLabel">English</small></div><i>›</i></button>
+          <button class="more-card glass" id="moreTheme"><span>◐</span><div><b data-i18n="appearance">Appearance</b><small id="themeLabel">Dark</small></div><i>›</i></button>
+          <button class="more-card glass" id="installBtn"><span>⊕</span><div><b data-i18n="install">Add to Home Screen</b><small data-i18n="installSub">Use Atlas like an app</small></div><i>›</i></button>
+        </div>
+        <div class="legal glass">
+          <a href="/about.html" data-i18n="about">About</a><a href="/privacy.html" data-i18n="privacy">Privacy</a><a href="/terms.html" data-i18n="terms">Terms</a><a href="/affiliate-disclosure.html" data-i18n="affiliate">Affiliate Disclosure</a>
+        </div>
+        <p class="footer-note">AI Tool Atlas · 200 curated tools · <span data-i18n="noSignup">No sign-up required</span></p>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="App navigation">
+      <button class="active" data-nav="home"><span>⌂</span><b data-i18n="navHome">Home</b></button>
+      <button data-nav="explore"><span>⌕</span><b data-i18n="navExplore">Explore</b></button>
+      <button class="atlas-nav" data-nav="atlas"><span>✦</span><b>Atlas</b></button>
+      <button data-nav="saved"><span>♡</span><b data-i18n="navSaved">Saved</b></button>
+      <button data-nav="more"><span>•••</span><b data-i18n="navMore">More</b></button>
+    </nav>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <section class="sheet" id="toolSheet" aria-hidden="true"><button class="sheet-close" data-close-sheet>×</button><div id="toolDetail"></div></section>
+  <section class="sheet compare-sheet" id="compareSheet" aria-hidden="true"><button class="sheet-close" data-close-compare>×</button><div class="sheet-inner"><span class="kicker" data-i18n="compare">Compare tools</span><h2 data-i18n="compareTitle">Choose up to 3 tools</h2><div class="compare-search"><input id="compareSearch" type="search" placeholder="Search tools..."></div><div id="comparePicker" class="compare-picker"></div><div id="compareTable" class="compare-table"></div></div></section>
+  <div class="toast" id="toast"></div>
+
+  <script src="/data.js?v=final1"></script>
+  <script src="/app.js?v=final1"></script>
+</body>
+</html>
