@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,">
   <meta name="theme-color" content="#07101d">
   <meta name="description" content="Discover, compare and save 200 curated AI tools with Atlas Assistant.">
   <link rel="canonical" href="https://aitoolshub.aitoolsdirectory.workers.dev/">
@@ -12,7 +12,7 @@
   <meta name="apple-mobile-web-app-title" content="AI Tool Atlas">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/app.css?v=final1">
+  <link rel="stylesheet" href="/app.css?v=atlas3-preview1">
   <title>AI Tool Atlas — 200 AI tools in one app</title>
 </head>
 <body>
@@ -55,7 +55,15 @@
 
         <div class="section-head"><div><span class="kicker" data-i18n="trending">TRENDING NOW</span><h2 data-i18n="popularTools">Popular AI tools</h2></div><button class="text-btn" data-nav="explore" data-i18n="viewAll">View all</button></div>
         <div class="tool-scroll" id="trendingGrid"></div>
-        <!-- HilltopAds native banner: below popular tools -->
+        <button class="deals-teaser glass" data-nav="deals"><span class="deals-teaser-icon">🎮</span><span><b data-i18n="dealsTitle">Gaming & Digital Deals</b><small data-i18n="dealsEntrySub">Gaming offers in a separate section</small></span><span aria-hidden="true">→</span></button>
+        <section class="atlas-v3-feature glass" aria-label="Featured partner tools">
+          <div class="v3-orbit" aria-hidden="true">✦</div>
+          <span class="kicker" data-i18n="featuredKicker">FEATURED PARTNERS</span>
+          <h2 data-i18n="featuredTitle">Discover tools worth trying</h2>
+          <p data-i18n="featuredText">Explore curated AI services. Partner links are clearly labeled.</p>
+          <button class="primary-btn" data-nav="explore" data-i18n="featuredAction">Explore AI tools</button>
+        </section>
+        <!-- Adsterra native banner: below popular tools; delivery depends on network approval, geography and blockers -->
         <aside class="atlas-ad" aria-label="Sponsored advertisement">
           <span class="atlas-ad-label">Advertisement</span>
           <script async="async" data-cfasync="false" src="https://bauval.org/21/f9e38c7d46dba0abae049e57ae1afba3"></script>
@@ -83,6 +91,18 @@
         </div>
       </section>
 
+      <section class="screen" data-screen="deals">
+        <div class="screen-title"><span class="kicker">GAMING & DIGITAL</span><h2 data-i18n="dealsTitle">Gaming & Digital Deals</h2><p data-i18n="dealsSub">Explore gaming offers. Check region, availability and seller terms before purchasing.</p></div>
+        <div class="deals-hero glass"><div class="deals-neon" aria-hidden="true">VI</div><span class="kicker">GTA VI · PS5</span><h2 data-i18n="gtaTitle">GTA VI buying guide</h2><p data-i18n="gtaSub">Availability, release timing and purchase conditions must be confirmed with the seller.</p></div>
+        <div class="deals-grid">
+          <article class="deal-card glass"><span class="deal-icon">S</span><h3>Steam Wallet</h3><p data-i18n="steamDesc">Digital wallet credit — check your account region.</p><span class="deal-status" data-i18n="offerPending">Partner offer being verified</span></article>
+          <article class="deal-card glass"><span class="deal-icon">PS</span><h3>PlayStation Gift Cards</h3><p data-i18n="psDesc">Check the PSN region and redemption rules.</p><span class="deal-status" data-i18n="offerPending">Partner offer being verified</span></article>
+          <article class="deal-card glass"><span class="deal-icon">X</span><h3>Xbox Gift Cards</h3><p data-i18n="xboxDesc">Check currency and account region.</p><span class="deal-status" data-i18n="offerPending">Partner offer being verified</span></article>
+          <article class="deal-card glass"><span class="deal-icon">A</span><h3>App Store & iTunes</h3><p data-i18n="appleDesc">Digital gift cards — regional restrictions apply.</p><span class="deal-status" data-i18n="offerPending">Partner offer being verified</span></article>
+        </div>
+        <p class="deals-note" data-i18n="dealsNote">Partner purchase links will appear after their destinations and terms have been verified.</p>
+      </section>
+
       <section class="screen" data-screen="saved">
         <div class="screen-title"><span class="kicker" data-i18n="saved">SAVED</span><h2 data-i18n="savedTitle">Your favorite tools</h2><p data-i18n="savedSub">Saved on this device — no account needed.</p></div>
         <div id="savedEmpty" class="empty-card glass"><div>♡</div><h3 data-i18n="savedEmptyTitle">Nothing saved yet</h3><p data-i18n="savedEmptySub">Tap the heart on any tool to keep it here.</p><button class="primary-btn" data-nav="explore" data-i18n="browseTools">Browse tools</button></div>
@@ -91,6 +111,7 @@
 
       <section class="screen" data-screen="more">
         <div class="screen-title"><span class="kicker" data-i18n="more">MORE</span><h2 data-i18n="moreTitle">Settings & tools</h2></div>
+        <button class="more-card glass deals-entry" data-nav="deals"><span>🎮</span><div><b data-i18n="dealsTitle">Gaming & Digital Deals</b><small data-i18n="dealsEntrySub">Gaming offers in a separate section</small></div><i>›</i></button>
         <div class="more-grid">
           <button class="more-card glass" id="openCompare"><span>⇄</span><div><b data-i18n="compare">Compare tools</b><small data-i18n="compareSub">Pick up to 3 tools</small></div><i>›</i></button>
           <button class="more-card glass" id="moreLang"><span>文</span><div><b data-i18n="language">Language</b><small id="moreLangLabel">English</small></div><i>›</i></button>
@@ -119,7 +140,7 @@
   <section class="sheet compare-sheet" id="compareSheet" aria-hidden="true"><button class="sheet-close" data-close-compare>×</button><div class="sheet-inner"><span class="kicker" data-i18n="compare">Compare tools</span><h2 data-i18n="compareTitle">Choose up to 3 tools</h2><div class="compare-search"><input id="compareSearch" type="search" placeholder="Search tools..."></div><div id="comparePicker" class="compare-picker"></div><div id="compareTable" class="compare-table"></div></div></section>
   <div class="toast" id="toast"></div>
 
-  <script src="/data.js?v=final1"></script>
-  <script src="/app.js?v=final1"></script>
+  <script src="/data.js?v=atlas3-preview1"></script>
+  <script src="/app.js?v=atlas3-preview1"></script>
 </body>
 </html>
